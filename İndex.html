@@ -11,7 +11,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             height: 100vh;
             display: flex;
@@ -24,7 +23,6 @@
             color: #fff;
             perspective: 1000px;
         }
-
         /* Animasyonlu arka plan */
         .background {
             position: absolute;
@@ -37,19 +35,11 @@
             animation: gradientBG 15s ease infinite;
             z-index: -2;
         }
-
         @keyframes gradientBG {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-
         /* Uzay efekti ve yıldızlar */
         .stars-container {
             position: absolute;
@@ -58,35 +48,23 @@
             overflow: hidden;
             z-index: -1;
         }
-
         .star {
             position: absolute;
             background-color: white;
             border-radius: 50%;
             animation: twinkle var(--duration, 4s) infinite ease-in-out var(--delay, 0s), shooting var(--shooting-duration, 10s) infinite ease-out var(--shooting-delay, 0s);
         }
-
         @keyframes twinkle {
-            0%, 100% {
-                opacity: 0.3;
-                transform: scale(0.7);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1);
-            }
+            0%, 100% { opacity: 0.3; transform: scale(0.7); }
+            50% { opacity: 1; transform: scale(1); }
         }
-
         @keyframes shooting {
-            0% {
-                transform: translateX(0) translateY(0);
-            }
+            0% { transform: translateX(0) translateY(0); }
             10%, 100% {
                 transform: translateX(calc(var(--distance, 500) * 1px)) translateY(calc(var(--distance, 500) * -0.2 * 1px));
                 opacity: 0;
             }
         }
-
         /* Ana konteyner */
         .container {
             position: relative;
@@ -100,18 +78,10 @@
             transform-style: preserve-3d;
             animation: containerAppear 2s forwards;
         }
-
         @keyframes containerAppear {
-            from {
-                opacity: 0;
-                transform: scale(0.7) translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
+            from { opacity: 0; transform: scale(0.7) translateY(30px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
-
         /* Mesaj paneli */
         .message-panel {
             width: 100%;
@@ -125,12 +95,10 @@
             transform: translateZ(0);
             transition: all 0.5s ease;
         }
-
         .message-panel:hover {
             transform: translateZ(20px);
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 255, 255, 0.2) inset;
         }
-
         /* Ana mesaj (başlık) */
         .message {
             font-size: 3em;
@@ -144,30 +112,15 @@
             animation: gradientText 8s ease infinite, fadeInUp 2s forwards;
             text-align: center;
         }
-
         @keyframes gradientText {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
         /* Alt mesaj */
         .sub-message {
             font-size: 1.4em;
@@ -177,21 +130,14 @@
             animation: fadeIn 2s forwards 1s;
             text-align: center;
         }
-
         .highlight {
             color: #ffd54f;
             font-weight: 500;
         }
-
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-
         /* Butonlar */
         .buttons-container {
             display: flex;
@@ -201,7 +147,6 @@
             opacity: 0;
             animation: fadeIn 2s forwards 1.5s;
         }
-
         .button {
             padding: 15px 30px;
             font-size: 1.1em;
@@ -215,7 +160,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .button:before {
             content: '';
             position: absolute;
@@ -226,25 +170,16 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: 0.5s;
         }
-
         .button:hover {
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 10px 25px rgba(255, 154, 158, 0.6);
         }
-
-        .button:hover:before {
-            left: 100%;
-        }
-
+        .button:hover:before { left: 100%; }
         .button-2 {
             background: linear-gradient(45deg, #a18cd1, #fbc2eb);
             box-shadow: 0 5px 15px rgba(161, 140, 209, 0.4);
         }
-
-        .button-2:hover {
-            box-shadow: 0 10px 25px rgba(161, 140, 209, 0.6);
-        }
-
+        .button-2:hover { box-shadow: 0 10px 25px rgba(161, 140, 209, 0.6); }
         /* Overlay */
         .overlay {
             position: fixed;
@@ -259,12 +194,10 @@
             z-index: 5;
             backdrop-filter: blur(5px);
         }
-
         .overlay.active {
             opacity: 1;
             visibility: visible;
         }
-
         /* Sürpriz mesaj kutusu */
         .surprise-message {
             position: fixed;
@@ -281,23 +214,17 @@
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-align: center;
         }
-
-        .surprise-message.active {
-            transform: translate(-50%, -50%) scale(1);
-        }
-
+        .surprise-message.active { transform: translate(-50%, -50%) scale(1); }
         .surprise-message h2 {
             color: #6a11cb;
             margin-bottom: 20px;
             font-size: 2.2em;
         }
-
         .surprise-message p {
             font-size: 1.2em;
             margin-bottom: 15px;
             line-height: 1.6;
         }
-
         .close-button {
             padding: 12px 25px;
             margin-top: 25px;
@@ -309,12 +236,10 @@
             transition: all 0.3s ease;
             font-size: 1.1em;
         }
-
         .close-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
         }
-
         /* Anı Günlüğü (galeri bölümü) */
         .gallery {
             position: fixed;
@@ -331,12 +256,10 @@
             visibility: hidden;
             transition: all 0.4s ease;
         }
-
         .gallery.active {
             opacity: 1;
             visibility: visible;
         }
-
         .gallery-content {
             width: 90%;
             max-width: 1000px;
@@ -344,14 +267,12 @@
             color: white;
             text-align: center;
         }
-
         .gallery-title {
             font-size: 2em;
             margin-bottom: 30px;
             color: #fff;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
-
         /* Anı Günlüğü için metin listesi */
         .memory-list {
             list-style: none;
@@ -362,7 +283,6 @@
             flex-wrap: wrap;
             gap: 10px;
         }
-
         .memory-list li {
             cursor: pointer;
             padding: 10px 15px;
@@ -370,11 +290,7 @@
             border-radius: 5px;
             transition: background 0.3s ease;
         }
-
-        .memory-list li:hover {
-            background: rgba(255, 255, 255, 0.4);
-        }
-
+        .memory-list li:hover { background: rgba(255, 255, 255, 0.4); }
         .memory-content {
             margin-top: 20px;
             padding: 15px;
@@ -386,7 +302,6 @@
             max-height: 300px;
             overflow-y: auto;
         }
-
         .gallery-close {
             padding: 12px 25px;
             background: linear-gradient(45deg, #ff9a9e, #fad0c4);
@@ -398,12 +313,10 @@
             font-size: 1.1em;
             margin-top: 20px;
         }
-
         .gallery-close:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(255, 154, 158, 0.4);
         }
-
         /* Kalp animasyonları */
         .heart {
             position: absolute;
@@ -414,7 +327,6 @@
             animation: floatHeart var(--duration, 6s) ease-in infinite;
             z-index: 1;
         }
-
         .heart:before,
         .heart:after {
             content: "";
@@ -424,34 +336,14 @@
             background: inherit;
             border-radius: 50%;
         }
-
-        .heart:before {
-            top: -15px;
-            left: 0;
-        }
-
-        .heart:after {
-            left: -15px;
-            top: 0;
-        }
-
+        .heart:before { top: -15px; left: 0; }
+        .heart:after { left: -15px; top: 0; }
         @keyframes floatHeart {
-            0% {
-                transform: translateY(100vh) rotate(45deg) scale(0.3);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-100px) rotate(45deg) scale(1);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) rotate(45deg) scale(0.3); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100px) rotate(45deg) scale(1); opacity: 0; }
         }
-
         /* Müzik çalar */
         .music-player {
             position: fixed;
@@ -469,13 +361,7 @@
             transform: translateX(200px);
             animation: slideInPlayer 1s forwards 3s;
         }
-
-        @keyframes slideInPlayer {
-            to {
-                transform: translateX(0);
-            }
-        }
-
+        @keyframes slideInPlayer { to { transform: translateX(0); } }
         .music-button {
             width: 40px;
             height: 40px;
@@ -490,17 +376,14 @@
             align-items: center;
             transition: all 0.3s ease;
         }
-
         .music-button:hover {
             transform: scale(1.1);
             box-shadow: 0 0 15px rgba(255, 154, 158, 0.6);
         }
-
         .music-info {
             color: white;
             font-size: 0.9em;
         }
-
         /* Gezegenlerin hareket efekti */
         .planet {
             position: absolute;
@@ -510,16 +393,10 @@
             animation: planetMove var(--duration, 30s) linear infinite;
             z-index: -1;
         }
-
         @keyframes planetMove {
-            0% {
-                transform: rotate(0deg) translateX(var(--distance, 400px)) rotate(0deg) scale(1);
-            }
-            100% {
-                transform: rotate(360deg) translateX(var(--distance, 400px)) rotate(-360deg) scale(1.5);
-            }
+            0% { transform: rotate(0deg) translateX(var(--distance, 400px)) rotate(0deg) scale(1); }
+            100% { transform: rotate(360deg) translateX(var(--distance, 400px)) rotate(-360deg) scale(1.5); }
         }
-
         /* Confetti efekti */
         .confetti {
             position: absolute;
@@ -529,38 +406,18 @@
             animation: fall var(--fall-duration, 5s) ease-in infinite;
             z-index: 3;
         }
-
         @keyframes fall {
-            0% {
-                transform: translateY(-100px) rotate(0deg) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(720deg) scale(1);
-                opacity: 0;
-            }
+            0% { transform: translateY(-100px) rotate(0deg) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg) scale(1); opacity: 0; }
         }
-
         /* Sürpriz butonu efektleri */
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
+        .pulse { animation: pulse 2s infinite; }
         @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(255, 154, 158, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(255, 154, 158, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(255, 154, 158, 0);
-            }
+            0% { box-shadow: 0 0 0 0 rgba(255, 154, 158, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 154, 158, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 154, 158, 0); }
         }
-
         /* Loading ekranı */
         .loading-screen {
             position: fixed;
@@ -575,7 +432,6 @@
             z-index: 1000;
             transition: opacity 1s ease, visibility 1s;
         }
-
         .loading-spinner {
             width: 100px;
             height: 100px;
@@ -584,24 +440,14 @@
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
-
         .loading-text {
             position: absolute;
             color: white;
             font-size: 1.3em;
             margin-top: 150px;
         }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .hidden { opacity: 0; visibility: hidden; }
     </style>
 </head>
 <body>
@@ -678,7 +524,7 @@
 
     <!-- Müzik element (GitHub'daki dosya kullanılarak) -->
     <audio id="bgMusic" loop autoplay>
-        <source src="https://raw.githubusercontent.com/yusufnrdgn/ozordilerim/main/taladro-kar-demeti-kandil_(mp3tur.com).mp3" type="audio/mpeg">
+        <source src="https://raw.githubusercontent.com/yusufnrdgn/ozordlrm/main/taladro-kar-demeti-kandil_(mp3tur.com).mp3" type="audio/mpeg">
     </audio>
 
     <script>
@@ -747,7 +593,6 @@
                 document.body.appendChild(heart);
                 setTimeout(() => heart.remove(), 10000);
             }
-
             function createHearts() {
                 setInterval(createHeart, 300);
             }
