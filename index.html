@@ -23,6 +23,57 @@
             color: #fff;
             perspective: 1000px;
         }
+        /* Splash screen stil ayarları */
+        #splashScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            z-index: 3000;
+        }
+        #splashButtons {
+            position: absolute;
+            bottom: 50px;
+            display: flex;
+            gap: 20px;
+        }
+        /* Loading ekranı */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1a237e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s ease, visibility 1s;
+        }
+        .loading-spinner {
+            width: 100px;
+            height: 100px;
+            border: 5px solid transparent;
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        .loading-text {
+            position: absolute;
+            color: white;
+            font-size: 1.3em;
+            margin-top: 150px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .hidden { opacity: 0; visibility: hidden; }
         /* Animasyonlu arka plan */
         .background {
             position: absolute;
@@ -418,39 +469,18 @@
             70% { box-shadow: 0 0 0 15px rgba(255, 154, 158, 0); }
             100% { box-shadow: 0 0 0 0 rgba(255, 154, 158, 0); }
         }
-        /* Loading ekranı */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #1a237e;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            transition: opacity 1s ease, visibility 1s;
-        }
-        .loading-spinner {
-            width: 100px;
-            height: 100px;
-            border: 5px solid transparent;
-            border-top-color: #fff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        .loading-text {
-            position: absolute;
-            color: white;
-            font-size: 1.3em;
-            margin-top: 150px;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .hidden { opacity: 0; visibility: hidden; }
     </style>
 </head>
 <body>
+    <!-- Splash Screen -->
+    <div id="splashScreen">
+        <h1 style="font-size:3em; margin-bottom:20px;">SELAMÜNALEYKÜM EYLÜLÜM</h1>
+        <div id="splashButtons">
+            <button id="startButton" class="button">Aleykümselam Kocam</button>
+            <button id="runawayButton" class="button">Aleykümselam</button>
+        </div>
+    </div>
+    
     <!-- Loading ekranı -->
     <div class="loading-screen">
         <div class="loading-spinner"></div>
@@ -529,6 +559,29 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Splash ekranı elementleri
+            const splashScreen = document.getElementById('splashScreen');
+            const startButton = document.getElementById('startButton');
+            const runawayButton = document.getElementById('runawayButton');
+            const bgMusic = document.getElementById('bgMusic');
+
+            // Runaway buton: Her tıklandığında rastgele konuma taşınsın.
+            runawayButton.addEventListener('click', function() {
+                const containerWidth = splashScreen.offsetWidth;
+                const containerHeight = splashScreen.offsetHeight;
+                runawayButton.style.position = 'absolute';
+                const newLeft = Math.random() * (containerWidth - runawayButton.offsetWidth);
+                const newTop = Math.random() * (containerHeight - runawayButton.offsetHeight);
+                runawayButton.style.left = newLeft + 'px';
+                runawayButton.style.top = newTop + 'px';
+            });
+
+            // Start butonuna tıklanınca: Splash ekranı gizlenip müzik başlasın.
+            startButton.addEventListener('click', function() {
+                splashScreen.style.display = 'none';
+                bgMusic.play();
+            });
+
             // Loading ekranını 2 saniye sonra gizle
             setTimeout(() => {
                 document.querySelector('.loading-screen').classList.add('hidden');
@@ -660,7 +713,6 @@
             });
 
             // Müzik çalar işlemleri:
-            const bgMusic = document.getElementById('bgMusic');
             const playMusic = document.getElementById('playMusic');
             playMusic.addEventListener('click', function () {
                 if (bgMusic.paused) {
