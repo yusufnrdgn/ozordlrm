@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Özel Barışma Sayfası</title>
     <style>
-        /* Temel stil ayarları */
+       
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             height: 100vh;
             display: flex;
@@ -23,7 +24,7 @@
             color: #fff;
             perspective: 1000px;
         }
-        /* Splash screen stil ayarları */
+     
         #splashScreen {
             position: fixed;
             top: 0;
@@ -38,13 +39,14 @@
             color: #fff;
             z-index: 3000;
         }
+
         #splashButtons {
             position: absolute;
             bottom: 50px;
             display: flex;
             gap: 20px;
         }
-        /* Loading ekranı */
+       
         .loading-screen {
             position: fixed;
             top: 0;
@@ -58,6 +60,7 @@
             z-index: 1000;
             transition: opacity 1s ease, visibility 1s;
         }
+
         .loading-spinner {
             width: 100px;
             height: 100px;
@@ -66,15 +69,25 @@
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
+
         .loading-text {
             position: absolute;
             color: white;
             font-size: 1.3em;
             margin-top: 150px;
         }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .hidden { opacity: 0; visibility: hidden; }
-        /* Animasyonlu arka plan */
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+       
         .background {
             position: absolute;
             top: 0;
@@ -86,12 +99,21 @@
             animation: gradientBG 15s ease infinite;
             z-index: -2;
         }
+
         @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
-        /* Uzay efekti ve yıldızlar */
+     
         .stars-container {
             position: absolute;
             width: 100%;
@@ -99,18 +121,31 @@
             overflow: hidden;
             z-index: -1;
         }
+
         .star {
             position: absolute;
             background-color: white;
             border-radius: 50%;
             animation: twinkle var(--duration, 4s) infinite ease-in-out var(--delay, 0s), shooting var(--shooting-duration, 10s) infinite ease-out var(--shooting-delay, 0s);
         }
+
         @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(0.7); }
-            50% { opacity: 1; transform: scale(1); }
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(0.7);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
+
         @keyframes shooting {
-            0% { transform: translateX(0) translateY(0); }
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+
             10%, 100% {
                 transform: translateX(calc(var(--distance, 500) * 1px)) translateY(calc(var(--distance, 500) * -0.2 * 1px));
                 opacity: 0;
@@ -129,11 +164,19 @@
             transform-style: preserve-3d;
             animation: containerAppear 2s forwards;
         }
+
         @keyframes containerAppear {
-            from { opacity: 0; transform: scale(0.7) translateY(30px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+            from {
+                opacity: 0;
+                transform: scale(0.7) translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
-        /* Mesaj paneli */
+     
         .message-panel {
             width: 100%;
             padding: 30px;
@@ -146,11 +189,12 @@
             transform: translateZ(0);
             transition: all 0.5s ease;
         }
-        .message-panel:hover {
-            transform: translateZ(20px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 255, 255, 0.2) inset;
-        }
-        /* Ana mesaj (başlık) */
+
+            .message-panel:hover {
+                transform: translateZ(20px);
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 255, 255, 0.2) inset;
+            }
+      
         .message {
             font-size: 3em;
             font-weight: bold;
@@ -163,14 +207,31 @@
             animation: gradientText 8s ease infinite, fadeInUp 2s forwards;
             text-align: center;
         }
+
         @keyframes gradientText {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
+
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         /* Alt mesaj */
         .sub-message {
@@ -181,13 +242,20 @@
             animation: fadeIn 2s forwards 1s;
             text-align: center;
         }
+
         .highlight {
             color: #ffd54f;
             font-weight: 500;
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
         /* Butonlar */
         .buttons-container {
@@ -198,6 +266,7 @@
             opacity: 0;
             animation: fadeIn 2s forwards 1.5s;
         }
+
         .button {
             padding: 15px 30px;
             font-size: 1.1em;
@@ -211,26 +280,35 @@
             position: relative;
             overflow: hidden;
         }
-        .button:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-        .button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(255, 154, 158, 0.6);
-        }
-        .button:hover:before { left: 100%; }
+
+            .button:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                transition: 0.5s;
+            }
+
+            .button:hover {
+                transform: translateY(-5px) scale(1.05);
+                box-shadow: 0 10px 25px rgba(255, 154, 158, 0.6);
+            }
+
+                .button:hover:before {
+                    left: 100%;
+                }
+
         .button-2 {
             background: linear-gradient(45deg, #a18cd1, #fbc2eb);
             box-shadow: 0 5px 15px rgba(161, 140, 209, 0.4);
         }
-        .button-2:hover { box-shadow: 0 10px 25px rgba(161, 140, 209, 0.6); }
+
+            .button-2:hover {
+                box-shadow: 0 10px 25px rgba(161, 140, 209, 0.6);
+            }
         /* Overlay */
         .overlay {
             position: fixed;
@@ -245,10 +323,11 @@
             z-index: 5;
             backdrop-filter: blur(5px);
         }
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
+
+            .overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
         /* Sürpriz mesaj kutusu */
         .surprise-message {
             position: fixed;
@@ -265,17 +344,23 @@
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-align: center;
         }
-        .surprise-message.active { transform: translate(-50%, -50%) scale(1); }
-        .surprise-message h2 {
-            color: #6a11cb;
-            margin-bottom: 20px;
-            font-size: 2.2em;
-        }
-        .surprise-message p {
-            font-size: 1.2em;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
+
+            .surprise-message.active {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            .surprise-message h2 {
+                color: #6a11cb;
+                margin-bottom: 20px;
+                font-size: 2.2em;
+            }
+
+            .surprise-message p {
+                font-size: 1.2em;
+                margin-bottom: 15px;
+                line-height: 1.6;
+            }
+
         .close-button {
             padding: 12px 25px;
             margin-top: 25px;
@@ -287,10 +372,11 @@
             transition: all 0.3s ease;
             font-size: 1.1em;
         }
-        .close-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
-        }
+
+            .close-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+            }
         /* Anı Günlüğü (galeri bölümü) */
         .gallery {
             position: fixed;
@@ -307,10 +393,12 @@
             visibility: hidden;
             transition: all 0.4s ease;
         }
-        .gallery.active {
-            opacity: 1;
-            visibility: visible;
-        }
+
+            .gallery.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
         .gallery-content {
             width: 90%;
             max-width: 1000px;
@@ -318,6 +406,7 @@
             color: white;
             text-align: center;
         }
+
         .gallery-title {
             font-size: 2em;
             margin-bottom: 30px;
@@ -334,14 +423,19 @@
             flex-wrap: wrap;
             gap: 10px;
         }
-        .memory-list li {
-            cursor: pointer;
-            padding: 10px 15px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
-        .memory-list li:hover { background: rgba(255, 255, 255, 0.4); }
+
+            .memory-list li {
+                cursor: pointer;
+                padding: 10px 15px;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 5px;
+                transition: background 0.3s ease;
+            }
+
+                .memory-list li:hover {
+                    background: rgba(255, 255, 255, 0.4);
+                }
+
         .memory-content {
             margin-top: 20px;
             padding: 15px;
@@ -353,6 +447,7 @@
             max-height: 300px;
             overflow-y: auto;
         }
+
         .gallery-close {
             padding: 12px 25px;
             background: linear-gradient(45deg, #ff9a9e, #fad0c4);
@@ -364,11 +459,12 @@
             font-size: 1.1em;
             margin-top: 20px;
         }
-        .gallery-close:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 154, 158, 0.4);
-        }
-        /* Kalp animasyonları */
+
+            .gallery-close:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(255, 154, 158, 0.4);
+            }
+      
         .heart {
             position: absolute;
             width: 30px;
@@ -378,22 +474,45 @@
             animation: floatHeart var(--duration, 6s) ease-in infinite;
             z-index: 1;
         }
-        .heart:before,
-        .heart:after {
-            content: "";
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: inherit;
-            border-radius: 50%;
-        }
-        .heart:before { top: -15px; left: 0; }
-        .heart:after { left: -15px; top: 0; }
+
+            .heart:before,
+            .heart:after {
+                content: "";
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                background: inherit;
+                border-radius: 50%;
+            }
+
+            .heart:before {
+                top: -15px;
+                left: 0;
+            }
+
+            .heart:after {
+                left: -15px;
+                top: 0;
+            }
+
         @keyframes floatHeart {
-            0% { transform: translateY(100vh) rotate(45deg) scale(0.3); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(-100px) rotate(45deg) scale(1); opacity: 0; }
+            0% {
+                transform: translateY(0px) rotate(45deg) scale(0.3);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(45deg) scale(1);
+                opacity: 0;
+            }
         }
         /* Müzik çalar */
         .music-player {
@@ -412,7 +531,13 @@
             transform: translateX(200px);
             animation: slideInPlayer 1s forwards 3s;
         }
-        @keyframes slideInPlayer { to { transform: translateX(0); } }
+
+        @keyframes slideInPlayer {
+            to {
+                transform: translateX(0);
+            }
+        }
+
         .music-button {
             width: 40px;
             height: 40px;
@@ -427,10 +552,12 @@
             align-items: center;
             transition: all 0.3s ease;
         }
-        .music-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px rgba(255, 154, 158, 0.6);
-        }
+
+            .music-button:hover {
+                transform: scale(1.1);
+                box-shadow: 0 0 15px rgba(255, 154, 158, 0.6);
+            }
+
         .music-info {
             color: white;
             font-size: 0.9em;
@@ -444,9 +571,15 @@
             animation: planetMove var(--duration, 30s) linear infinite;
             z-index: -1;
         }
+
         @keyframes planetMove {
-            0% { transform: rotate(0deg) translateX(var(--distance, 400px)) rotate(0deg) scale(1); }
-            100% { transform: rotate(360deg) translateX(var(--distance, 400px)) rotate(-360deg) scale(1.5); }
+            0% {
+                transform: rotate(0deg) translateX(var(--distance, 400px)) rotate(0deg) scale(1);
+            }
+
+            100% {
+                transform: rotate(360deg) translateX(var(--distance, 400px)) rotate(-360deg) scale(1.5);
+            }
         }
         /* Confetti efekti */
         .confetti {
@@ -457,17 +590,39 @@
             animation: fall var(--fall-duration, 5s) ease-in infinite;
             z-index: 3;
         }
+
         @keyframes fall {
-            0% { transform: translateY(-100px) rotate(0deg) scale(0); opacity: 0; }
-            10% { opacity: 1; }
-            100% { transform: translateY(100vh) rotate(720deg) scale(1); opacity: 0; }
+            0% {
+                transform: translateY(-100px) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(720deg) scale(1);
+                opacity: 0;
+            }
         }
         /* Sürpriz butonu efektleri */
-        .pulse { animation: pulse 2s infinite; }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 154, 158, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 154, 158, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 154, 158, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 154, 158, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(255, 154, 158, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 154, 158, 0);
+            }
         }
     </style>
 </head>
@@ -476,11 +631,11 @@
     <div id="splashScreen">
         <h1 style="font-size:3em; margin-bottom:20px;">SELAMÜNALEYKÜM EYLÜLÜM</h1>
         <div id="splashButtons">
-            <button id="startButton" class="button">Aleykümselam Kocam</button>
+            <button id="startButton" class="button">ALEYKÜMSELAM KOCACIMMM</button>
             <button id="runawayButton" class="button">Aleykümselam</button>
         </div>
     </div>
-    
+
     <!-- Loading ekranı -->
     <div class="loading-screen">
         <div class="loading-spinner"></div>
@@ -497,13 +652,7 @@
     <!-- Ana içerik -->
     <div class="container">
         <div class="message-panel">
-            <!-- Üst başlık -->
             <h1 class="message">Benim özel olanım seni seviyorum ♥ E</h1>
-            <p class="sub-message">
-                Yaşadığımız <span class="highlight">güzel anılar</span> geleceğimizi de aydınlatacak.
-                <span class="highlight">Kırgınlıklar geçici</span>,
-                birlikte olduğumuz zaman hissettiklerimiz ise <span class="highlight">kalıcı</span>.
-            </p>
             <div class="buttons-container">
                 <button class="button pulse" id="surpriseBtn">Özel Mesaj Aç</button>
                 <button class="button button-2" id="galleryBtn">Anı Günlüğü</button>
@@ -514,12 +663,8 @@
     <!-- Müzik çalar -->
     <div class="music-player">
         <button class="music-button" id="playMusic">▶</button>
-        <div class="music-info">
-            <div>Sevgi Melodisi</div>
-        </div>
+        <div class="music-info"><div>Sevgi Melodisi</div></div>
     </div>
-
-    <!-- Overlay -->
     <div class="overlay" id="overlay"></div>
 
     <!-- Sürpriz mesaj (tam ekran) -->
@@ -559,14 +704,14 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Splash ekranı elementleri
+          
             const splashScreen = document.getElementById('splashScreen');
             const startButton = document.getElementById('startButton');
             const runawayButton = document.getElementById('runawayButton');
             const bgMusic = document.getElementById('bgMusic');
 
-            // Runaway buton: Her tıklandığında rastgele konuma taşınsın.
-            runawayButton.addEventListener('click', function() {
+            // Runaway buton: tıklanınca yok ol kocam desin istiyorum
+            runawayButton.addEventListener('click', function () {
                 const containerWidth = splashScreen.offsetWidth;
                 const containerHeight = splashScreen.offsetHeight;
                 runawayButton.style.position = 'absolute';
@@ -576,8 +721,8 @@
                 runawayButton.style.top = newTop + 'px';
             });
 
-            // Start butonuna tıklanınca: Splash ekranı gizlenip müzik başlasın.
-            startButton.addEventListener('click', function() {
+            // Start butonuna tıklanınca: Splash ekranı gizlenip müzik başlasın
+            startButton.addEventListener('click', function () {
                 splashScreen.style.display = 'none';
                 bgMusic.play();
             });
@@ -629,8 +774,7 @@
                     planetsContainer.appendChild(planet);
                 }
             }
-
-            // Kalp animasyonları (sürekli)
+         
             createHearts();
             function createHeart() {
                 const heart = document.createElement('div');
@@ -639,7 +783,8 @@
                 heart.style.width = `${size}px`;
                 heart.style.height = `${size}px`;
                 heart.style.left = `${Math.random() * 100}%`;
-                heart.style.bottom = `-50px`;
+                // Rastgele konum değer
+                heart.style.top = `${Math.random() * 100}%`;
                 const colors = ['rgba(255, 0, 0, 0.8)', 'rgba(255, 105, 180, 0.8)', 'rgba(199, 21, 133, 0.8)', 'rgba(255, 20, 147, 0.8)'];
                 heart.style.background = colors[Math.floor(Math.random() * colors.length)];
                 heart.style.setProperty('--duration', `${Math.random() * 4 + 6}s`);
@@ -735,13 +880,11 @@ Sonra da zaten hâlâ hatırlıyorum okulda dışarıda karla oynarken şekil ç
 Zelihada arkadan bastırıyordu (fksfjskl) parmağı dondu senin için der gibi...
 Ama bana cevap vermediğin bir zaman vardı, uzun süre çok korkmuştum "Ne oldu acaba?" diye.
 Numaranı almama pişmanlığımı yaşadığım bir zamandı. Saf gülüşüne tutulduğum ilk anlar...`,
-
                 2: `İkinci anımız karmalıklar olsun ve o gecemizle başlasın.
 HAYIR! HAYIR! O değil... Bu, sana "yavru kuşum" dememi söylediğin o gece.
 Ah o çocuk, o bebek... Şimdi büyümüş olmalı. O geceden sonra o bebeğe baktığın için konuşmamız azalmaya başladı.
 Her neyse, o zamanlar aslında kolonya ile "Eylül" yazıp kâğıda ateşler yazarak Eylül yazmaya çalışmıştım;
 çocukluk işte. Şimdi olsa benzinle asfaltı yakar "EYLÜLÜM" yazarım.`,
-
                 3: `Bu anı biraz acıklı; ne de olsa sen beni bırakmıştın.
 Yaklaşık bir ay öncesinden kuzenimle anlaştım, onlarda kalacaktım.
 Senin doğum günün yaklaşıyordu. Resimler seçtim ve pasta sipariş verdim.
@@ -755,11 +898,9 @@ Bunlar ufak şeyler, her hafta Kadirli'de birilerinin bıçaklanmasını saymazs
 O geceyi zaten hatırlıyorsundur, benimle kalmasan da harika bir gün oldu benim için.
 Sonraki soğuk algınlığıma bin basar gecenin mutluluğu. Anı yazmakta berbatmışım,
 onu fark ettim. Heyecandan aklıma bir şey geliyor değil, zihnim kitleniyor; saçma sapan gülümsüyorum seni düşününce.`,
-
                 4: `Bu anı günlüğüne geleceğimizi yazmak isterim Eylül,
 ölene kadar olan bizi, karım olan seni. Sen de benimle kalıp savaşmak istersen...`
             };
-
             const memoryItems = document.querySelectorAll('.memory-list li');
             const memoryContentDiv = document.querySelector('.memory-content');
             memoryItems.forEach(item => {
